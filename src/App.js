@@ -1,52 +1,46 @@
 import React from "react";
-import Food from "./components/Food";
 
 
-const foodILike = [
-  {
-    name: "Kimchi",
-    image: `https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn4.i-scmp.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F980x551%2Fpublic%2F2013%2F11%2F08%2Fkimchi.jpg%3Fitok%3DiL6Mnqub&f=1&nofb=1`,
-    rating: 4.1,
-  },
-  {
-    name: "Samgyupsal",
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.K8iCCcUHHzpbMvmkx1Z9twHaE8%26pid%3DApi&f=1",
-    rating: 5,
-  },
-  {
-    name: "Bibimbab",
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.V2AdgXdvK2tsEsQENuwuAAHaE7%26pid%3DApi&f=1",
-    rating: 4.3,
-  },
-  {
-    name: "Doncasu",
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.YMV6JK5HgHAJq5ubYDL2BQHaEC%26pid%3DApi&f=1",
-    rating: 4.5,
-  },
-  {
-    name: "Kimbobs",
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.OOXjp-9vrx07XkZ4ACg4pQHaE8%26pid%3DApi&f=1",
-    rating: 4,
-  },
-];
 
-function App() {
-  return (
-    <div>
-      {foodILike.map((dish) => (
-        <Food
-          key={dish.name}
-          name={dish.name}
-          img={dish.image}
-          rating={dish.rating}
-        ></Food>
-      ))}
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    console.log("constructor")
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+  componentDidUpdate(){
+    console.log("compomemt did update")
+  }
+
+  componentWillUnmount(){
+    console.log("component will dead . unmount")
+  }
+
+  state = {
+    count :0
+  }
+  add = () =>{
+    this.setState(current=>({
+      count : current.count +1
+    }))
+  }
+  minus = () =>{
+    this.setState(current=>({
+      count : current.count -1
+    }))
+  }
+  render() {
+    console.log("render")
+    return (
+      <div>
+        <h2>The number is : {this.state.count}</h2>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    )
+  }
 }
-
 export default App;
